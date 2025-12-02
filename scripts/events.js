@@ -1,25 +1,29 @@
 
 document.querySelectorAll(".movement").forEach(e => {
-    e.onmousedown = (event) => {
+    e.onmousedown = ontouchstart = (event) => {
         event.stopImmediatePropagation();
-        initialPosition = event.clientX - position;
+        
+        const clientX = (event.type == 'touchstart')? event.touches[0].clientX : event.clientX;
+        initialPosition = clientX - position;
         pressed = true;
     }
 });
 
 
-onmouseup = () => { 
+onmouseup = ontouchend = () => { 
     pressed = false;
 };
 
 
-onmousemove = (event) => {
+onmousemove = ontouchmove = (event) => {
     
     if ( !pressed ){
         return;
     }
-    
-    setCaliperPixel(event.clientX - initialPosition);
+
+    const clientX = (event.type == 'touchmove')? event.touches[0].clientX : event.clientX;    
+    setCaliperPixel(clientX - initialPosition);
+
 };
 
 

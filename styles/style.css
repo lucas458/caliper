@@ -9,6 +9,11 @@
     src: url("../quartz.ttf");
 }
 
+html, body {
+    overscroll-behavior: none;
+    touch-action: cross-slide-x;
+}
+
 body{
     user-select: none;
     background-color: #181818;
