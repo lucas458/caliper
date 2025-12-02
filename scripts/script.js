@@ -1,14 +1,3 @@
-const clamp = (value, min, max) => {
-    if (value < min) return min;
-    if (value > max) return max;
-    return value;
-};
-
-const map = (x, in_min, in_max, out_min, out_max) => {
-    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;  
-};
-
-
 
 let pressed = false;
 let initialPosition = 0;
@@ -67,10 +56,6 @@ function updateCaliper(){
 
 
 
-
-
-
-
 function setCaliperPixel( distance = 0 ){
     distance = clamp(distance, 0, 1956 + 312);
     position = distance;
@@ -80,12 +65,15 @@ function setCaliperPixel( distance = 0 ){
 
 
 
+
+
 // Milimeters
 function setCaliperMilimeters( distance = 0 ){
     distance = clamp(distance, 0, 180);
     const OFFSET = map(distance, 0, 180, 0, 1956 + 312);
     setCaliperPixel(OFFSET);
 }
+
 
 function getCaliperMilimeters(){
     return map(position - zeroPosition, 0, 1956 + 312, 0, 180);
@@ -99,48 +87,10 @@ function setCaliperInch( distance = 0 ){
     setCaliperPixel(OFFSET);
 }
 
+
 function getCaliperInch(){
     return map(position - zeroPosition, 0, 1928 + 312, 0, 7);
 }
-
-
-
-
-document.querySelectorAll(".movement").forEach(e => {
-    e.onmousedown = (event) => {
-        event.stopImmediatePropagation();
-        initialPosition = event.clientX - position;
-        pressed = true;
-    }
-});
-
-
-onmouseup = () => { 
-    pressed = false;
-};
-
-
-onmousemove = (event) => {
-    
-    if ( !pressed ){
-        return;
-    }
-    
-    setCaliperPixel(event.clientX - initialPosition);
-};
-
-
-onwheel = (event) => {
-
-    if ( pressed ){
-        return;
-    }
-
-    let step = (event.deltaY < 0) ? 1 : -1;
-    step *= event.shiftKey? 10 : 1;
-
-    setCaliperPixel(position + step);
-};
 
 
 
@@ -159,21 +109,3 @@ function onClickSetValue(){
 }
 
 
-
-// TEXT FIELD: ONINPUT
-document.querySelector(".UI_textField").onkeydown = (event) => {
-
-    if ( event.key != "Enter" ){
-        return;
-    }
-
-    onClickSetValue();
-};
-
-
-document.querySelector(".UI_textField").oninput = (event) => {
-    console.log( event.target )
-    const input = event.target;
-    const isError = event.target.parentElement.classList.toggle("UI_textField_error", input.value.length == 0);
-    buttonSetValue.disabled = isError;
-};
