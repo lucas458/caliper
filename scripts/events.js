@@ -34,7 +34,15 @@ onwheel = (event) => {
     }
 
     let step = (event.deltaY < 0) ? 1 : -1;
+
+    step *= event.altKey? 0.1 : 1;
     step *= event.shiftKey? 10 : 1;
 
-    setCaliperPixel(position + step);
+    if ( unitIsMilimeters ){
+        setCaliperMilimeters( getCaliperMilimeters() + step );
+        return;
+    }
+
+    setCaliperInch( getCaliperInch() + step );
+    
 };
