@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: lcd;
-    src: url("quartz.ttf");
+    src: url("../quartz.ttf");
 }
 
 body{
