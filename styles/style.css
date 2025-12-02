@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: lcd;
+    src: url("quartz.ttf");
+}
+
+body{
+    user-select: none;
+    background-color: #181818;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    gap: 8px;
+    padding: 8px;
+}
+
+.container{
+    background-color: #212121;
+    border-radius: 8px;
+    border: 1px solid #353535;
+}
+
+
+#caliper,
+svg {
+    width: 100%;
+    height: auto; 
+}
+
+
+.movement{
+    transform: translateX(-312px);
+}
+
+
+#caliper:has(.movement:hover) .movement{
+    cursor: move;
+}
+
+
+#bottom{
+    height: 100%;
+    width:  100%;
+    
+    display: flex;
+    gap: 8px;
+}
+
+#bottom .container{
+    flex: 1;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+#bottom .container:last-child{
+    padding: 32px;
+}
+
+
+
+
+
+button{
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 8px 10px;
+    color: #fff;
+    cursor: pointer;
+}
+button:hover{
+    opacity: 0.5;
+}
+
+button:disabled{
+    opacity: 0.25;
+}
+
+
