@@ -75,6 +75,7 @@ function setCaliperPixel( distance = 0 ){
     distance = clamp(distance, 0, 1956 + 312);
     position = distance;
     document.querySelectorAll('.movement').forEach(e => e.style.transform = `translateX(${-312 + distance}px)`);
+    updateCaliper();
 }
 
 
@@ -126,7 +127,6 @@ onmousemove = (event) => {
     }
     
     setCaliperPixel(event.clientX - initialPosition);
-    updateCaliper();
 };
 
 
@@ -140,5 +140,40 @@ onwheel = (event) => {
     step *= event.shiftKey? 10 : 1;
 
     setCaliperPixel(position + step);
-    updateCaliper();
+};
+
+
+
+
+
+function onClickSetValue(){
+
+    const VALUE = document.querySelector(".UI_textField_input").value;
+    
+    if ( unitIsMilimeters ){
+        setCaliperMilimeters(VALUE);
+        return;
+    }
+
+    setCaliperInch(VALUE);
+}
+
+
+
+// TEXT FIELD: ONINPUT
+document.querySelector(".UI_textField").onkeydown = (event) => {
+
+    if ( event.key != "Enter" ){
+        return;
+    }
+
+    onClickSetValue();
+};
+
+
+document.querySelector(".UI_textField").oninput = (event) => {
+    console.log( event.target )
+    const input = event.target;
+    const isError = event.target.parentElement.classList.toggle("UI_textField_error", input.value.length == 0);
+    buttonSetValue.disabled = isError;
 };
