@@ -1,7 +1,7 @@
 
-let pressed = false;
+let isPressed = false;
 let initialPosition = 0;
-let position = 0;
+let currentPosition = 0;
 let unitIsMilimeters = true;
 let zeroPosition = 0;
 let isPowered = false;
@@ -33,7 +33,7 @@ function onClickPower(){
 
 
 function onClickZero(){
-    zeroPosition = position;
+    zeroPosition = currentPosition;
     updateCaliper();
 }
 
@@ -58,7 +58,7 @@ function updateCaliper(){
 
 function setCaliperPixel( distance = 0 ){
     distance = clamp(distance, 0, 1956 + 312);
-    position = distance;
+    currentPosition = distance;
     document.querySelectorAll('.movement').forEach(e => e.style.transform = `translateX(${-312 + distance}px)`);
     updateCaliper();
 }
@@ -76,7 +76,7 @@ function setCaliperMilimeters( distance = 0 ){
 
 
 function getCaliperMilimeters(){
-    return map(position - zeroPosition, 0, 1956 + 312, 0, 180);
+    return map(currentPosition - zeroPosition, 0, 1956 + 312, 0, 180);
 }
 
 
@@ -89,7 +89,7 @@ function setCaliperInch( distance = 0 ){
 
 
 function getCaliperInch(){
-    return map(position - zeroPosition, 0, 1928 + 312, 0, 7);
+    return map(currentPosition - zeroPosition, 0, 1928 + 312, 0, 7);
 }
 
 

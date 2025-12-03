@@ -4,20 +4,20 @@ document.querySelectorAll(".movement").forEach(e => {
         event.stopImmediatePropagation();
         
         const clientX = (event.type == 'touchstart')? event.touches[0].clientX : event.clientX;
-        initialPosition = clientX - position;
-        pressed = true;
+        initialPosition = clientX - currentPosition;
+        isPressed = true;
     }
 });
 
 
 onmouseup = ontouchend = () => { 
-    pressed = false;
+    isPressed = false;
 };
 
 
 onmousemove = ontouchmove = (event) => {
     
-    if ( !pressed ){
+    if ( !isPressed ){
         return;
     }
 
@@ -29,7 +29,7 @@ onmousemove = ontouchmove = (event) => {
 
 onwheel = (event) => {
 
-    if ( pressed ){
+    if ( isPressed ){
         return;
     }
 
