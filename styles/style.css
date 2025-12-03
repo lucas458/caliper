@@ -60,6 +60,11 @@ svg {
 }
 
 
+#caliper:has(.movementHover:hover) .movementHover{
+    fill: #007bff !important;
+}
+
+
 #bottom{
     height: 100%;
     width:  100%;
