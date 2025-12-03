@@ -6,11 +6,6 @@
 }
 
 
-
-
-
-
-
 #readoutContainer{
     background-color: #1c1c1c;
     color: #fff;
@@ -32,17 +27,14 @@
 }
 
 #readoutLcd{
+    height: 56px;
     background-color: #4e5046;
     color: #171717;
     border: 3px solid #fff;
-
-    
-    height: 56px;
-    
-
+    border-radius: 2px;
+    padding: 0 4px;
     display: flex;
     align-items: center;
-    padding: 0 4px;
 }
 
 #number{
@@ -62,13 +54,10 @@
     visibility: hidden;    
 }
     
-#unit[milimeters=true] div:first-child{
-    visibility: visible;
-}
+#unit[milimeters=true] div:first-child,
 #unit[milimeters=false] div:last-child{
     visibility: visible;
 }
-
 
 
 
