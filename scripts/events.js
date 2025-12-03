@@ -29,7 +29,7 @@ onmousemove = ontouchmove = (event) => {
 
 onwheel = (event) => {
 
-    if ( isPressed ){
+    if ( isPressed || event.ctrlKey ){
         return;
     }
 
