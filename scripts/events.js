@@ -29,7 +29,7 @@ onmousemove = ontouchmove = (event) => {
 
 onwheel = (event) => {
 
-    if ( isPressed || event.ctrlKey ){
+    if ( isPressed || event.ctrlKey || modal.classList.contains('modalOpen') ){
         return;
     }
 
