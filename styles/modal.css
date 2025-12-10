@@ -66,15 +66,8 @@
     border-color: #28a745 !important;
 }
 
-.modalDrawingCircle::after{
-    content: attr(value);
-    position: relative;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 20px;
-}
 
-.modalDrawingLine{
+.modalDrawingLine:nth-child(3){
     width: 10px;
     height: 2px;
     background-color: #007bff;
@@ -82,15 +75,13 @@
 }
 
 
-#modalDrawingWrapper > .modalDrawingLine{
+#modalDrawingWrapper > .modalDrawingLine:nth-child(3){
     width: 100%;
     margin: -20px;
-    display: flex;
-    /* align-items: center; */
 }
 
-#modalDrawingWrapper > .modalDrawingLine::before,
-#modalDrawingWrapper > .modalDrawingLine::after{
+#modalDrawingWrapper > .modalDrawingLine:nth-child(3)::before,
+#modalDrawingWrapper > .modalDrawingLine:nth-child(3)::after{
     content: '';
     display: block;
     width: 2px;
@@ -101,17 +92,30 @@
     top: -8px;
 }
 
-#modalDrawingWrapper > .modalDrawingLine::before{
+#modalDrawingWrapper > .modalDrawingLine:nth-child(3)::before{
     left: 100%;
 }
 
-.modalDrawingCircle .modalDrawingLine{
+
+.modalDrawingLine:nth-child(4){
     width: 128px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    left: 50%;
+    height: 2px;
+    background-color: #007bff;
+    position: absolute;
+    top: 50%;
+}
+
+.modalDrawingLine:nth-child(4)::before,
+.modalDrawingLine:nth-child(4)::after{
+    content: 'd1';
+    position: absolute; 
+    bottom: 100%;
+    right: 120px;
+}
+
+.modalDrawingLine:nth-child(4)::after{
+    content: 'd2';
+    right: -10px;
 }
 
 
@@ -125,6 +129,22 @@
 
 #distanceToCenter::before{
     content: 'Distância: ';
+}
+
+
+
+
+@keyframes pulseAnimation {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+#modalContent:has(.UI_textField:nth-child(1):focus-within) #modalDrawingWrapper > .modalDrawingLine:nth-child(3),
+#modalContent:has(.UI_textField:nth-child(2):focus-within) #modalDrawingWrapper > .modalDrawingCircle:nth-child(1),
+#modalContent:has(.UI_textField:nth-child(3):focus-within) .modalDrawingCircle:nth-child(2){
+    animation: pulseAnimation 0.8s infinite ease-in-out;
 }
 
 
