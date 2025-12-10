@@ -111,6 +111,6 @@ function onClickSetValue(){
 
 
 function onClickCalculateCenter(){
-    
+    modalOpen();
 }
 

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/digitalReadout.css">
     <link rel="stylesheet" href="styles/textField.css">
+    <link rel="stylesheet" href="styles/modal.css">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <title>Paquímetro</title>
 </head>
@@ -175,11 +176,68 @@
     </div>
 
 
+
+
+    <div id="modal">
+        <div id="modalWindow">
+
+            <div id="modalContent">
+                
+                <div id="modalDrawingContainer">
+                    <div id="modalDrawingWrapper">
+                        <div class="modalDrawingCircle" value="d1">
+                            <div class="modalDrawingLine"></div>
+                        </div>
+                        <div class="modalDrawingCircle" value="d2"></div>
+                    
+                        <div class="modalDrawingLine"></div>
+                    </div>
+                </div>
+
+
+                <div id="distanceToCenter"></div>
+
+
+                <div id="modalInputList">
+                    <div class="UI_textField">
+                        <input type="number" id="inputDistance" class="UI_textField_input" spellcheck="false" placeholder=" " value="48" enterkeyhint="next">
+                        <div class="UI_textField_label">Distância</div>
+                        <div class="UI_textField_helper">Campo não pode estar vazio</div>
+                    </div>
+    
+                    <div class="UI_textField">
+                        <input type="number" id="inputDiameterA" class="UI_textField_input" spellcheck="false" placeholder=" " value="20" enterkeyhint="next">
+                        <div class="UI_textField_label">Diametro 1 (d1)</div>
+                        <div class="UI_textField_helper">Campo não pode estar vazio</div>
+                    </div>
+                    
+                    <div class="UI_textField">
+                        <input type="number" id="inputDiameterB" class="UI_textField_input" spellcheck="false" placeholder=" " value="16" enterkeyhint="enter">
+                        <div class="UI_textField_label">Diametro 2 (d2)</div>
+                        <div class="UI_textField_helper">Campo não pode estar vazio</div>
+                    </div>
+                </div>
+                
+
+            </div>
+
+            <div id="modalFooter">
+                <button class="button-red" id="buttonSetValue" onclick="modalClose()">Fechar</button>
+                <button class="button-blue" id="buttonSetValue" onclick="onClickModalOk()">Calcular</button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
     
     <script src="scripts/script.js"></script>
     <script src="scripts/utils.js"></script>
     <script src="scripts/textField.js"></script>
     <script src="scripts/events.js"></script>
+    <script src="scripts/modal.js"></script>
     
 </body>
 </html>
