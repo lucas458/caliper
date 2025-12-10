@@ -8,6 +8,13 @@
 ![Screenshot](screenshots/img2.png)
 
 
+### Fórmula para encontrar a distância entre os centros
+# $P = W - \frac{D_a + D_b}{2}$
+$P =$ Pitch<br>
+$W =$ Width<br>
+$D_a =$ Diameter A<br>
+$D_b =$ Diameter B
+
 ## Referências
 [Módulo digital](https://www.ifixit.com/products/digital-caliper)
 
