@@ -1,8 +1,11 @@
 ## Caliper (Paquímetro) 180 mm
 
 
-### Screenshot
+### Inicio
 ![Screenshot](screenshots/img1.png)
+
+### Modal: Calcular distância entre centros
+![Screenshot](screenshots/img2.png)
 
 
 ## Referências
